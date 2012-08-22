@@ -1,0 +1,352 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="4dp"
+        android:layout_y="14dp"
+        android:text="@string/salary" />
+
+    <EditText
+        android:id="@+id/salary_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:layout_x="106dp"
+        android:layout_y="1dp"
+        android:ems="10"
+        android:inputType="numberSigned" />
+
+    <TextView
+        android:id="@+id/salary_after_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_x="4dp"
+        android:layout_y="40dp"
+        android:text="@string/salary_after" />
+
+    <EditText
+        android:id="@+id/salary_after"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="106dp"
+        android:layout_y="30dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <TextView
+        android:id="@+id/pay_base_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="6dp"
+        android:layout_y="129dp"
+        android:text="@string/pay_base_dis" />
+
+    <TextView
+        android:id="@+id/public_fund_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_x="182dp"
+        android:layout_y="131dp"
+        android:text="@string/public_fund_dis" />
+
+    <EditText
+        android:id="@+id/social_security"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_x="110dp"
+        android:layout_y="120dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/public_fund"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_x="226dp"
+        android:layout_y="118dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/pay_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="6dp"
+        android:layout_y="162dp"
+        android:text="@string/pay_rate" />
+
+    <EditText
+        android:id="@+id/pension_company"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="70dp"
+        android:layout_y="185dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <TextView
+        android:id="@+id/company_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="76dp"
+        android:layout_y="163dp"
+        android:text="@string/company_rate" />
+
+    <TextView
+        android:id="@+id/personal_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="197dp"
+        android:layout_y="163dp"
+        android:text="@string/personal_rate" />
+
+    <EditText
+        android:id="@+id/personal_personal"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="200dp"
+        android:layout_y="184dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/medical_insurance_company"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="69dp"
+        android:layout_y="221dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/unemployment_insurance_company"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_x="70dp"
+        android:layout_y="254dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/industrial_injury_company"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="69dp"
+        android:layout_y="288dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/maternity_company"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="71dp"
+        android:layout_y="320dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/public_fund_ins_company"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="72dp"
+        android:layout_y="353dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <TextView
+        android:id="@+id/pension_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="11dp"
+        android:layout_y="200dp"
+        android:text="@string/pension_dis" />
+
+    <TextView
+        android:id="@+id/maternity_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="14dp"
+        android:layout_y="333dp"
+        android:text="@string/maternity_dis" />
+
+    <TextView
+        android:id="@+id/public_fund_ins_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="9dp"
+        android:layout_y="368dp"
+        android:text="@string/public_fund_ins_dis" />
+
+    <TextView
+        android:id="@+id/industrial_injury_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="13dp"
+        android:layout_y="301dp"
+        android:text="@string/industrial_injury_dis" />
+
+    <TextView
+        android:id="@+id/unemployment_insurance_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="14dp"
+        android:layout_y="265dp"
+        android:text="@string/unemployment_insurance_dis" />
+
+    <TextView
+        android:id="@+id/TextView04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="13dp"
+        android:layout_y="236dp"
+        android:text="@string/medical_insurance_dis" />
+
+    <EditText
+        android:id="@+id/unemployment_insurance_personal"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_x="202dp"
+        android:layout_y="250dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/medical_insurance_personal"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_x="200dp"
+        android:layout_y="219dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/industrial_injury_personal"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_x="203dp"
+        android:layout_y="288dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/maternity_personal"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_x="202dp"
+        android:layout_y="322dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <EditText
+        android:id="@+id/public_fund_ins_personal"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_x="201dp"
+        android:layout_y="354dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="numberSigned|text" />
+
+    <TextView
+        android:id="@+id/tax_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="142dp"
+        android:layout_y="432dp"
+        android:text="@string/tax_dis" />
+
+    <TextView
+        android:id="@+id/tax"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_x="211dp"
+        android:layout_y="430dp" />
+
+    <TextView
+        android:id="@+id/company_paid"
+        android:layout_width="62dp"
+        android:layout_height="31dp"
+        android:layout_x="86dp"
+        android:layout_y="400dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/company_paid_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="7dp"
+        android:layout_y="404dp"
+        android:text="@string/company_paid_dis" />
+
+
+
+    <TextView
+        android:id="@+id/personal_paid"
+        android:layout_width="58dp"
+        android:layout_height="30dp"
+        android:layout_x="237dp"
+        android:layout_y="404dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/personal_paid_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="157dp"
+        android:layout_y="405dp"
+        android:text="@string/personal_paid_dis" />
+
+    <TextView
+        android:id="@+id/social_security_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="80dp"
+        android:layout_y="132dp"
+        android:text="@string/social_security_dis" />
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="137dp"
+        android:layout_y="70dp"
+        android:text="@string/calculate" />
+
+</AbsoluteLayout>
