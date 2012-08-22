@@ -5,11 +5,16 @@ import java.text.DecimalFormat;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,10 +57,26 @@ public class Sc extends Activity {
 
 	private void findViews() {
 		button_calc = (Button) findViewById(R.id.calculate);
-		salary_before = (EditText) findViewById(R.id.salary_input);
-		salary_after = (EditText) findViewById(R.id.salary_after);
 		public_rate = (TextView) findViewById(R.id.social_security);
 		personal_rate = (TextView) findViewById(R.id.public_fund);
+		salary_before = (EditText) findViewById(R.id.salary_input);
+		salary_before.setOnKeyListener(new EditText.OnKeyListener() {
+			@Override
+			public boolean onKey(View arg, int arg1, KeyEvent arg2) {
+				// Integer salary = Integer.parseInt(salary_before.getText()
+				// .toString());
+				// if (salary > 11688) {
+				// public_rate.setText(salary_before.getText());
+				// } else {
+				// public_rate.setText("11688");
+				// }
+				public_rate.setText(salary_before.getText());
+				personal_rate.setText(salary_before.getText());
+				return false;
+			}
+
+		});
+		salary_after = (EditText) findViewById(R.id.salary_after);
 		tax_result = (TextView) findViewById(R.id.tax);
 
 		company_paid_result = (TextView) findViewById(R.id.company_paid);
@@ -94,7 +115,6 @@ public class Sc extends Activity {
 				Sc.this.generatePersonalPaidTotal();
 				Sc.this.generatePublicPaidDetails();
 				Sc.this.generatePersonalPaidDetails();
-
 			} catch (Exception e) {
 				e.printStackTrace();
 				Toast.makeText(Sc.this, R.string.input_error,
@@ -144,24 +164,28 @@ public class Sc extends Activity {
 
 	private void getPublicRate() {
 		DecimalFormat intNf = new DecimalFormat("0");
-		if (public_rate.getText().toString().equals("")) {
-			publicRate = salaryBefore;
-			public_rate.setText(intNf.format(publicRate));
-		} else {
-			publicRate = (double) Double.parseDouble(public_rate.getText()
-					.toString());
+		publicRate = (double) Double.parseDouble(public_rate.getText()
+				.toString());
+		if (publicRate > 11688) {
+			publicRate = (double) 11688;
+		} else if (publicRate < 1280) {
+			publicRate = (double) 1280;
 		}
+		public_rate.setText(intNf.format(publicRate));
+
 	}
 
 	private void getPersonalRate() {
 		DecimalFormat intNf = new DecimalFormat("0");
-		if (personal_rate.getText().toString().equals("")) {
-			personalRate = salaryBefore;
-			personal_rate.setText(intNf.format(personalRate));
-		} else {
-			personalRate = (double) Double.parseDouble(personal_rate.getText()
-					.toString());
+		personalRate = (double) Double.parseDouble(personal_rate.getText()
+				.toString());
+		if (personalRate > 11688) {
+			personalRate = (double) 11688;
+		}else if (personalRate < 1280) {
+			personalRate = (double) 1280;
 		}
+		personal_rate.setText(intNf.format(personalRate));
+
 	}
 
 	private void generatePublicPaidDetails() {
@@ -186,7 +210,6 @@ public class Sc extends Activity {
 	}
 
 	private void generatePersonalPaidDetails() {
-
 		DecimalFormat intNf = new DecimalFormat("0");
 		Double personalPersonal = personalRate * 0.08;
 		Double medicalInsurancePersonal = personalRate * 0.02;

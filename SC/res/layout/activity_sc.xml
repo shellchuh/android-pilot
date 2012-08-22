@@ -63,9 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_x="110dp"
         android:layout_y="120dp"
-        android:clickable="false"
         android:ems="10"
-        android:focusable="false"
         android:inputType="numberSigned|text" />
 
     <EditText
@@ -74,9 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_x="226dp"
         android:layout_y="118dp"
-        android:clickable="false"
         android:ems="10"
-        android:focusable="false"
         android:inputType="numberSigned|text" >
     </EditText>
 
