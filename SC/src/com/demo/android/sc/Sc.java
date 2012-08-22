@@ -37,16 +37,17 @@ public class Sc extends Activity {
 	private EditText maternity_personal;
 	private EditText public_fund_ins_personal;
 
+	private Double salaryBefore;
+	private Double publicRate;
+	private Double personalRate;
+	private Double salaryAfterFundandInsurance;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sc);
 		findViews();
 		setListener();
-	}
-
-	private void setListener() {
-		button_calc.setOnClickListener(calcSc);
 	}
 
 	private void findViews() {
@@ -76,102 +77,24 @@ public class Sc extends Activity {
 
 	}
 
+	private void setListener() {
+		button_calc.setOnClickListener(calcSc);
+	}
+
 	private OnClickListener calcSc = new Button.OnClickListener() {
 		public void onClick(View v) {
 			try {
-				InputMethodManager inputMethodManager = (InputMethodManager) Sc.this
-						.getApplicationContext().getSystemService(
-								Context.INPUT_METHOD_SERVICE);
-				inputMethodManager.hideSoftInputFromWindow(
-						button_calc.getWindowToken(), 0);
+				Sc.this.hideSoftInput();
+				Sc.this.getSalaryBefore();
+				Sc.this.getPublicRate();
+				Sc.this.getPersonalRate();
+				Sc.this.calSalaryAfterFundandInsurance();
+				Sc.this.calSalaryAfter();
+				Sc.this.generateCompanyPaidTotal();
+				Sc.this.generatePersonalPaidTotal();
+				Sc.this.generatePublicPaidDetails();
+				Sc.this.generatePersonalPaidDetails();
 
-				DecimalFormat nf = new DecimalFormat("0.00");
-				DecimalFormat intNf = new DecimalFormat("0");
-				Double salaryBefore = Double.parseDouble(salary_before
-						.getText().toString());
-				Double publicRate;
-				Double personalRate;
-				if (public_rate.getText().toString().equals("")) {
-					publicRate = salaryBefore;
-					public_rate.setText(intNf.format(publicRate));
-				} else {
-					publicRate = (double) Double.parseDouble(public_rate
-							.getText().toString());
-				}
-				if (personal_rate.getText().toString().equals("")) {
-					personalRate = salaryBefore;
-					personal_rate.setText(intNf.format(personalRate));
-				} else {
-					personalRate = (double) Double.parseDouble(personal_rate
-							.getText().toString());
-				}
-
-				Double salaryAfterFundandInsurance = salaryBefore
-						- (Double) (personalRate * 0.18);
-				Double salaryAfter = salaryAfterFundandInsurance;
-				Double tax = (double) 0;
-				if (salaryAfterFundandInsurance > 3500) {
-					Double salaryExtra = salaryAfterFundandInsurance - 3500;
-					if (salaryExtra <= 1500) {
-						tax = salaryExtra * 0.03 - 0;
-					} else if (salaryExtra > 1500 && salaryExtra <= 4500) {
-						tax = salaryExtra * 0.1 - 105;
-					} else if (salaryExtra > 4500 && salaryExtra <= 9000) {
-						tax = salaryExtra * 0.2 - 555;
-					} else if (salaryExtra > 9000 && salaryExtra <= 35000) {
-						tax = salaryExtra * 0.25 - 1005;
-					} else if (salaryExtra > 35000 && salaryExtra <= 55000) {
-						tax = salaryExtra * 0.3 - 2755;
-					} else if (salaryExtra > 55000 && salaryExtra <= 80000) {
-						tax = salaryExtra * 0.35 - 5505;
-					} else if (salaryExtra > 80000) {
-						tax = salaryExtra * 0.45 - 13505;
-					}
-					salaryAfter = salaryAfterFundandInsurance - tax;
-				}
-				Double companyPaid = publicRate * 0.44;
-				Double personalPaid = personalRate * 0.18;
-
-				Double pensionCompany = publicRate * 0.22;
-				Double medicalInsuranceCompany = publicRate * 0.12;
-				Double unemploymentInsuranceCompany = publicRate * 0.02;
-				Double industrialInjuryCompany = publicRate * 0.005;
-				Double maternityCompany = publicRate * 0.005;
-				Double publicFundInsCompany = publicRate * 0.07;
-
-				Double personalPersonal = personalRate * 0.08;
-				Double medicalInsurancePersonal = personalRate * 0.02;
-				Double unemploymentInsurancePersonal = personalRate * 0.01;
-				Double industrialInjuryPersonal = (double) 0;
-				Double maternityPersonal = (double) 0;
-				Double publicFundInsPersonal = personalRate * 0.07;
-
-				salary_after.setText(nf.format(salaryAfter));
-				tax_result.setText(nf.format(tax));
-				company_paid_result.setText(intNf.format(companyPaid));
-				personal_paid_result.setText(intNf.format(personalPaid));
-
-				pension_company.setText(intNf.format(pensionCompany));
-				medical_insurance_company.setText(intNf
-						.format(medicalInsuranceCompany));
-				unemployment_insurance_company.setText(intNf
-						.format(unemploymentInsuranceCompany));
-				industrial_injury_company.setText(intNf
-						.format(industrialInjuryCompany));
-				maternity_company.setText(intNf.format(maternityCompany));
-				public_fund_ins_company.setText(intNf
-						.format(publicFundInsCompany));
-
-				personal_personal.setText(intNf.format(personalPersonal));
-				medical_insurance_personal.setText(intNf
-						.format(medicalInsurancePersonal));
-				unemployment_insurance_personal.setText(intNf
-						.format(unemploymentInsurancePersonal));
-				industrial_injury_personal.setText(intNf
-						.format(industrialInjuryPersonal));
-				maternity_personal.setText(intNf.format(maternityPersonal));
-				public_fund_ins_personal.setText(intNf
-						.format(publicFundInsPersonal));
 			} catch (Exception e) {
 				e.printStackTrace();
 				Toast.makeText(Sc.this, R.string.input_error,
@@ -180,6 +103,130 @@ public class Sc extends Activity {
 		}
 
 	};
+
+	private void hideSoftInput() {
+		InputMethodManager inputMethodManager = (InputMethodManager) Sc.this
+				.getApplicationContext().getSystemService(
+						Context.INPUT_METHOD_SERVICE);
+		inputMethodManager.hideSoftInputFromWindow(
+				button_calc.getWindowToken(), 0);
+	}
+
+	private Double calTax() {
+		Double tax = (double) 0;
+		if (salaryAfterFundandInsurance > 3500) {
+			Double salaryExtra = salaryAfterFundandInsurance - 3500;
+			if (salaryExtra <= 1500) {
+				tax = salaryExtra * 0.03 - 0;
+			} else if (salaryExtra > 1500 && salaryExtra <= 4500) {
+				tax = salaryExtra * 0.1 - 105;
+			} else if (salaryExtra > 4500 && salaryExtra <= 9000) {
+				tax = salaryExtra * 0.2 - 555;
+			} else if (salaryExtra > 9000 && salaryExtra <= 35000) {
+				tax = salaryExtra * 0.25 - 1005;
+			} else if (salaryExtra > 35000 && salaryExtra <= 55000) {
+				tax = salaryExtra * 0.3 - 2755;
+			} else if (salaryExtra > 55000 && salaryExtra <= 80000) {
+				tax = salaryExtra * 0.35 - 5505;
+			} else if (salaryExtra > 80000) {
+				tax = salaryExtra * 0.45 - 13505;
+			}
+		}
+		DecimalFormat nf = new DecimalFormat("0.00");
+		tax_result.setText(nf.format(tax));
+		return tax;
+	}
+
+	private void calSalaryAfterFundandInsurance() {
+		salaryAfterFundandInsurance = salaryBefore
+				- (Double) (personalRate * 0.18);
+	}
+
+	private void getPublicRate() {
+		DecimalFormat intNf = new DecimalFormat("0");
+		if (public_rate.getText().toString().equals("")) {
+			publicRate = salaryBefore;
+			public_rate.setText(intNf.format(publicRate));
+		} else {
+			publicRate = (double) Double.parseDouble(public_rate.getText()
+					.toString());
+		}
+	}
+
+	private void getPersonalRate() {
+		DecimalFormat intNf = new DecimalFormat("0");
+		if (personal_rate.getText().toString().equals("")) {
+			personalRate = salaryBefore;
+			personal_rate.setText(intNf.format(personalRate));
+		} else {
+			personalRate = (double) Double.parseDouble(personal_rate.getText()
+					.toString());
+		}
+	}
+
+	private void generatePublicPaidDetails() {
+		DecimalFormat intNf = new DecimalFormat("0");
+		Double pensionCompany = publicRate * 0.22;
+		Double medicalInsuranceCompany = publicRate * 0.12;
+		Double unemploymentInsuranceCompany = publicRate * 0.02;
+		Double industrialInjuryCompany = publicRate * 0.005;
+		Double maternityCompany = publicRate * 0.005;
+		Double publicFundInsCompany = publicRate * 0.07;
+
+		pension_company.setText(intNf.format(pensionCompany));
+		medical_insurance_company
+				.setText(intNf.format(medicalInsuranceCompany));
+		unemployment_insurance_company.setText(intNf
+				.format(unemploymentInsuranceCompany));
+		industrial_injury_company
+				.setText(intNf.format(industrialInjuryCompany));
+		maternity_company.setText(intNf.format(maternityCompany));
+		public_fund_ins_company.setText(intNf.format(publicFundInsCompany));
+
+	}
+
+	private void generatePersonalPaidDetails() {
+
+		DecimalFormat intNf = new DecimalFormat("0");
+		Double personalPersonal = personalRate * 0.08;
+		Double medicalInsurancePersonal = personalRate * 0.02;
+		Double unemploymentInsurancePersonal = personalRate * 0.01;
+		Double industrialInjuryPersonal = (double) 0;
+		Double maternityPersonal = (double) 0;
+		Double publicFundInsPersonal = personalRate * 0.07;
+
+		personal_personal.setText(intNf.format(personalPersonal));
+		medical_insurance_personal.setText(intNf
+				.format(medicalInsurancePersonal));
+		unemployment_insurance_personal.setText(intNf
+				.format(unemploymentInsurancePersonal));
+		industrial_injury_personal.setText(intNf
+				.format(industrialInjuryPersonal));
+		maternity_personal.setText(intNf.format(maternityPersonal));
+		public_fund_ins_personal.setText(intNf.format(publicFundInsPersonal));
+	}
+
+	private void generateCompanyPaidTotal() {
+		DecimalFormat intNf = new DecimalFormat("0");
+		Double companyPaid = publicRate * 0.44;
+		company_paid_result.setText(intNf.format(companyPaid));
+	}
+
+	private void generatePersonalPaidTotal() {
+		DecimalFormat intNf = new DecimalFormat("0");
+		Double personalPaid = personalRate * 0.18;
+		personal_paid_result.setText(intNf.format(personalPaid));
+	}
+
+	private void calSalaryAfter() {
+		DecimalFormat nf = new DecimalFormat("0.00");
+		Double salaryAfter = salaryAfterFundandInsurance - Sc.this.calTax();
+		salary_after.setText(nf.format(salaryAfter));
+	}
+
+	private void getSalaryBefore() {
+		salaryBefore = Double.parseDouble(salary_before.getText().toString());
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
