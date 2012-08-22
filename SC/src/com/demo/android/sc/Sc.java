@@ -4,9 +4,11 @@ import java.text.DecimalFormat;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -77,6 +79,12 @@ public class Sc extends Activity {
 	private OnClickListener calcSc = new Button.OnClickListener() {
 		public void onClick(View v) {
 			try {
+				InputMethodManager inputMethodManager = (InputMethodManager) Sc.this
+						.getApplicationContext().getSystemService(
+								Context.INPUT_METHOD_SERVICE);
+				inputMethodManager.hideSoftInputFromWindow(
+						button_calc.getWindowToken(), 0);
+
 				DecimalFormat nf = new DecimalFormat("0.00");
 				DecimalFormat intNf = new DecimalFormat("0");
 				Double salaryBefore = Double.parseDouble(salary_before
@@ -140,29 +148,29 @@ public class Sc extends Activity {
 
 				salary_after.setText(nf.format(salaryAfter));
 				tax_result.setText(nf.format(tax));
-				company_paid_result.setText(nf.format(companyPaid));
-				personal_paid_result.setText(nf.format(personalPaid));
+				company_paid_result.setText(intNf.format(companyPaid));
+				personal_paid_result.setText(intNf.format(personalPaid));
 
-				pension_company.setText(nf.format(pensionCompany));
-				medical_insurance_company.setText(nf
+				pension_company.setText(intNf.format(pensionCompany));
+				medical_insurance_company.setText(intNf
 						.format(medicalInsuranceCompany));
-				unemployment_insurance_company.setText(nf
+				unemployment_insurance_company.setText(intNf
 						.format(unemploymentInsuranceCompany));
-				industrial_injury_company.setText(nf
+				industrial_injury_company.setText(intNf
 						.format(industrialInjuryCompany));
-				maternity_company.setText(nf.format(maternityCompany));
-				public_fund_ins_company
-						.setText(nf.format(publicFundInsCompany));
+				maternity_company.setText(intNf.format(maternityCompany));
+				public_fund_ins_company.setText(intNf
+						.format(publicFundInsCompany));
 
-				personal_personal.setText(nf.format(personalPersonal));
-				medical_insurance_personal.setText(nf
+				personal_personal.setText(intNf.format(personalPersonal));
+				medical_insurance_personal.setText(intNf
 						.format(medicalInsurancePersonal));
-				unemployment_insurance_personal.setText(nf
+				unemployment_insurance_personal.setText(intNf
 						.format(unemploymentInsurancePersonal));
-				industrial_injury_personal.setText(nf
+				industrial_injury_personal.setText(intNf
 						.format(industrialInjuryPersonal));
-				maternity_personal.setText(nf.format(maternityPersonal));
-				public_fund_ins_personal.setText(nf
+				maternity_personal.setText(intNf.format(maternityPersonal));
+				public_fund_ins_personal.setText(intNf
 						.format(publicFundInsPersonal));
 			} catch (Exception e) {
 				e.printStackTrace();

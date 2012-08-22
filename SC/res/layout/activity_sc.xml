@@ -12,7 +12,7 @@
 
     <EditText
         android:id="@+id/salary_input"
-        android:layout_width="wrap_content"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
         android:layout_x="106dp"
@@ -31,7 +31,7 @@
 
     <EditText
         android:id="@+id/salary_after"
-        android:layout_width="wrap_content"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_x="106dp"
         android:layout_y="30dp"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_x="182dp"
-        android:layout_y="131dp"
+        android:layout_y="129dp"
         android:text="@string/public_fund_dis" />
 
     <EditText
@@ -120,7 +120,7 @@
         android:layout_width="74dp"
         android:layout_height="wrap_content"
         android:layout_x="200dp"
-        android:layout_y="184dp"
+        android:layout_y="185dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -130,8 +130,8 @@
         android:id="@+id/medical_insurance_company"
         android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="69dp"
-        android:layout_y="221dp"
+        android:layout_x="70dp"
+        android:layout_y="220dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -139,10 +139,10 @@
 
     <EditText
         android:id="@+id/unemployment_insurance_company"
-        android:layout_width="72dp"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
         android:layout_x="70dp"
-        android:layout_y="254dp"
+        android:layout_y="255dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -152,8 +152,8 @@
         android:id="@+id/industrial_injury_company"
         android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="69dp"
-        android:layout_y="288dp"
+        android:layout_x="70dp"
+        android:layout_y="290dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -163,8 +163,8 @@
         android:id="@+id/maternity_company"
         android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="71dp"
-        android:layout_y="320dp"
+        android:layout_x="70dp"
+        android:layout_y="325dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -174,8 +174,8 @@
         android:id="@+id/public_fund_ins_company"
         android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="72dp"
-        android:layout_y="353dp"
+        android:layout_x="70dp"
+        android:layout_y="360dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -193,7 +193,7 @@
         android:id="@+id/maternity_dis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="14dp"
+        android:layout_x="11dp"
         android:layout_y="333dp"
         android:text="@string/maternity_dis" />
 
@@ -201,7 +201,7 @@
         android:id="@+id/public_fund_ins_dis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="9dp"
+        android:layout_x="11dp"
         android:layout_y="368dp"
         android:text="@string/public_fund_ins_dis" />
 
@@ -209,7 +209,7 @@
         android:id="@+id/industrial_injury_dis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="13dp"
+        android:layout_x="11dp"
         android:layout_y="301dp"
         android:text="@string/industrial_injury_dis" />
 
@@ -217,7 +217,7 @@
         android:id="@+id/unemployment_insurance_dis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="14dp"
+        android:layout_x="11dp"
         android:layout_y="265dp"
         android:text="@string/unemployment_insurance_dis" />
 
@@ -225,7 +225,7 @@
         android:id="@+id/TextView04"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="13dp"
+        android:layout_x="11dp"
         android:layout_y="236dp"
         android:text="@string/medical_insurance_dis" />
 
@@ -233,8 +233,8 @@
         android:id="@+id/unemployment_insurance_personal"
         android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="202dp"
-        android:layout_y="250dp"
+        android:layout_x="200dp"
+        android:layout_y="255dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -242,10 +242,10 @@
 
     <EditText
         android:id="@+id/medical_insurance_personal"
-        android:layout_width="75dp"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
         android:layout_x="200dp"
-        android:layout_y="219dp"
+        android:layout_y="220dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -253,10 +253,10 @@
 
     <EditText
         android:id="@+id/industrial_injury_personal"
-        android:layout_width="76dp"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="203dp"
-        android:layout_y="288dp"
+        android:layout_x="200dp"
+        android:layout_y="290dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -264,10 +264,10 @@
 
     <EditText
         android:id="@+id/maternity_personal"
-        android:layout_width="75dp"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="202dp"
-        android:layout_y="322dp"
+        android:layout_x="200dp"
+        android:layout_y="325dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -275,10 +275,10 @@
 
     <EditText
         android:id="@+id/public_fund_ins_personal"
-        android:layout_width="77dp"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
-        android:layout_x="201dp"
-        android:layout_y="354dp"
+        android:layout_x="200dp"
+        android:layout_y="360dp"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -297,14 +297,14 @@
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_x="211dp"
-        android:layout_y="430dp" />
+        android:layout_y="432dp" />
 
     <TextView
         android:id="@+id/company_paid"
         android:layout_width="62dp"
         android:layout_height="31dp"
         android:layout_x="86dp"
-        android:layout_y="400dp"
+        android:layout_y="404dp"
         android:text="" />
 
     <TextView
@@ -314,8 +314,6 @@
         android:layout_x="7dp"
         android:layout_y="404dp"
         android:text="@string/company_paid_dis" />
-
-
 
     <TextView
         android:id="@+id/personal_paid"
@@ -338,7 +336,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="80dp"
-        android:layout_y="132dp"
+        android:layout_y="129dp"
         android:text="@string/social_security_dis" />
 
     <Button
